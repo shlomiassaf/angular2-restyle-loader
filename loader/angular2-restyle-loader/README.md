@@ -54,8 +54,10 @@ module.exports = config;
 ```
 
   - context: the directory absolute to all resources. (Default: root)
-  - template: The new template (optional)
-  - styles: New styles (optional)
+  - components: an array of components config items to restyle
+  - -- selector: the **exect** selector of the component you wish to restyle.
+  - -- template: The new template (optional)
+  - -- styles: New styles (optional)
 
 The **template** and **styles** properties represent a replacement for
 their corresponding properties in the component metadata.
@@ -80,3 +82,53 @@ The loader will add the resource to the source code making it run through all th
 
 You can think that reMeta.uri === require
 
+### Notes:
+This loader is experimental.  
+It was originally built for @angular/material customization so all SCSS files are recompiled which allows $variable control (fonts, etc...)
+Material comes with hard coded CSS files in the components which makes customization very limited.
+
+When you need to restyle:
+  1) Try to use existing tools (SASS, component features, etc)
+  2) Try to use **restyle** but only to re-compile SCSS while declaring variables
+  3) Try Adding styles after (in addition) to the original files
+  
+> To sum up - try not to rewrite original code.  
+If 1, 2 & didn't help try replacing templates/styles.  
+
+## Restyling material slide toggle
+After: ![image](https://cloud.githubusercontent.com/assets/5377501/21007829/812c6d92-bcf3-11e6-8fed-02d750e68ca5.png)
+
+Before: ![image](https://cloud.githubusercontent.com/assets/5377501/21007867/c12bf73c-bcf3-11e6-9c51-1b141c4d4a93.png)
+
+
+```
+$md-slide-toggle-width: 48px !default;
+$md-slide-toggle-height: 24px !default;
+$md-slide-toggle-bar-height: 24px !default;
+$md-slide-toggle-thumb-size: 20px !default;
+$md-slide-toggle-margin: 0px !default;
+$md-slide-toggle-spacing: 10px !default;
+
+@import '~@angular/material/core/theming/all-theme';
+@import '~@angular/material/slide-toggle/slide-toggle-theme';
+@import '~@angular/material/slide-toggle/slide-toggle';
+
+.md-slide-toggle-bar {
+  border-radius: 46px;
+}
+
+.md-slide-toggle-thumb-container {
+  left: $md-slide-toggle-bar-height - $md-slide-toggle-thumb-size;
+}
+
+md-slide-toggle {
+  &.md-checked {
+    .md-slide-toggle-thumb-container {
+      left: - ($md-slide-toggle-bar-height - $md-slide-toggle-thumb-size);
+    }
+  }
+}
+```
+
+We can also get this working by using CSS overrides but it will be hard, dirty and painful.
+This approach separates the restyling from the app.

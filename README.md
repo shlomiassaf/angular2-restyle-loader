@@ -96,6 +96,11 @@ When you need to restyle:
 If 1, 2 & didn't help try replacing templates/styles.  
 
 ## Restyling material slide toggle
+After: ![image](https://cloud.githubusercontent.com/assets/5377501/21007829/812c6d92-bcf3-11e6-8fed-02d750e68ca5.png)
+
+Before: ![image](https://cloud.githubusercontent.com/assets/5377501/21007867/c12bf73c-bcf3-11e6-9c51-1b141c4d4a93.png)
+
+
 ```
 $md-slide-toggle-width: 48px !default;
 $md-slide-toggle-height: 24px !default;
@@ -124,3 +129,6 @@ md-slide-toggle {
   }
 }
 ```
+
+We can also get this working by using CSS overrides but it will be hard, dirty and painful.
+This approach separates the restyling from the app.
