@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "rootDir": "./loader/angular2-restyle-loader/src",
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": false,
+    "inlineSourceMap": true,
+    "declaration":false,
+    "outDir": "./loader/angular2-restyle-loader/lib",
+    "noEmitOnError": true,
+    "moduleResolution": "node",
+    "isolatedModules": false,
+    "noLib": false,
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "es6"
+    ],
+    "types": [
+      "node",
+      "webpack"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "src"
+  ]
+}

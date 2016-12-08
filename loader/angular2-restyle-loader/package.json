@@ -1,0 +1,27 @@
+{
+  "name": "angular2-restyle-loader",
+  "version": "1.0.0",
+  "description": "Customize angular 2 component metadata",
+  "keywords": [
+    "angular2",
+    "webpack"
+  ],
+  "author": "Shlomi Assaf <shlomiasaf@gmail.com>",
+  "homepage": "https://github.com/shlomiassaf/angular2-restyle-loader",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "dependencies": {
+    "recast": "^0.11.18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shlomiassaf/angular2-restyle-loader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shlomiassaf/angular2-restyle-loader/issues"
+  },
+  "engines": {
+    "node": ">= 4.2.1",
+    "npm": ">= 3"
+  }
+}
