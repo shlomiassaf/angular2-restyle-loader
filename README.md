@@ -14,6 +14,14 @@ If a component is mature the risk of change is low, on evolving components or li
 Since HTML templates are statically analyzed when compiling AOT we get some level of assurance.
 For styles its not the case, so make sure you know what you're doing.
 
+# AOT
+The restyle loader works only with JIT.
+When using AOT the angular compiler runs before webpack and so the loader, though running, has not effect.
+To enforce the restyle with AOT you can use [ngc-webpack](https://github.com/shlomiassaf/ngc-webpack)
+
+> ngc-webpack provides the infrastructure but you will have to build a logic using `NgcWebpackPlugin` to replace
+paths related to material resources (css, html)
+
 #Example: Restyling Material2
 
 Add the loader to Webpack configuration:
