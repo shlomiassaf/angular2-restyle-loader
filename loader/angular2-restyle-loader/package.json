@@ -1,7 +1,7 @@
 {
-  "name": "angular2-restyle-loader",
+  "name": "angular-restyle-loader",
   "version": "1.0.1",
-  "description": "Customize angular 2 component metadata",
+  "description": "Customize angular component metadata",
   "keywords": [
     "angular2",
     "webpack"
