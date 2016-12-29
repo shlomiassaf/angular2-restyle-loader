@@ -1,5 +1,5 @@
-# angular2-restyle-loader
-Customize angular 2 component metadata
+# angular-restyle-loader
+Customize angular component metadata
 
 Allows replacing template & styles metadata in 3rd party components.
 
