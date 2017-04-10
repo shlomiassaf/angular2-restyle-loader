@@ -37,14 +37,21 @@ export class ComponentVisitor {
     const components = this.components;
     recast.visit(ast, {
       visitObjectExpression: function(path) {
-        if (n.CallExpression.check(path.parentPath.parentPath.value)
-          && n.Identifier.check(path.parentPath.parentPath.value.callee)
-          && path.parentPath.parentPath.value.callee.name === 'Component') {
-
-          const selector: any = path.value.properties.find( p =>  p.key.name === 'selector' );
-          if (selector) {
-            components.set(resolveStringValue(selector.value), new ComponentExpression(path.value));
+        if (n.AssignmentExpression.check(path.parentPath.parentPath.parentPath.value)) {
+          const assignment = path.parentPath.parentPath.parentPath.value;
+          if (n.Identifier.check(assignment.left.property) && assignment.left.property.name === 'decorators') {
+            const argsProp = path.value.properties.find(p=>p.key.name === 'args');
+            if (argsProp) {
+              const decMeta = argsProp.value.elements.find( el => el.properties.find(p => p.key.name === 'selector'));
+              if (decMeta) {
+                const selector: any = decMeta.properties.find( p =>  p.key.name === 'selector' );
+                  if (selector && !n.Identifier.check(selector.value)) {
+                    components.set(resolveStringValue(selector.value), new ComponentExpression(decMeta));
+                  }
+              }
+            }
           }
+
         }
         this.traverse(path);
       }

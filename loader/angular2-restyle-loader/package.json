@@ -1,7 +1,7 @@
 {
   "name": "angular-restyle-loader",
-  "version": "1.0.1",
-  "description": "Customize angular component metadata",
+  "version": "2.0.0",
+  "description": "Customize angular component metadata (JIT)",
   "keywords": [
     "angular2",
     "webpack"

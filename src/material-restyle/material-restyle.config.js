@@ -4,7 +4,7 @@ const config = {
   context: __dirname,
   components: [
     {
-      selector: 'md-slide-toggle',
+      selector: 'md-slide-toggle, mat-slide-toggle',
       template: reMeta.uri('./slide-toggle/slide-toggle.html'),
       styles: [
         '.some { position: relative; }',
